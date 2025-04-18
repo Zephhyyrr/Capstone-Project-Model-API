@@ -1,0 +1,6 @@
+Flask
+transformers
+torch
+whisper
+librosa
+numpy
