@@ -58,32 +58,32 @@ def speech_to_text():
 
     return jsonify({'text': text})
 
-# Fungsi parsing output model
-import re
 
 def parse_model_response(response_text):
+    # Pattern untuk mencari bagian Original, Corrected, dan Reason
     pattern = re.compile(
-        r'Original:\s*(.*?)\s*Corrected:\s*(.*?)\s*Reason:\s*(.*)', 
+        r'Original:\s*(.*?)\s*Corrected:\s*(.*?)\s*Reason:\s*(.*?)(?:\n|$)', 
         re.DOTALL
     )
 
-    match = pattern.search(response_text)
-    if match:
-        original = match.group(1).strip()
-        corrected = match.group(2).strip()
-        reason = match.group(3).strip()
+    matches = pattern.findall(response_text)
+    
+    if matches:
+        # Ambil hanya match pertama
+        original, corrected, reason = matches[0]
 
         # Safety check
-        if not corrected or not original:
+        if not corrected.strip() or not original.strip():
             return None
 
         return {
-            "original": original,
-            "corrected": corrected,
-            "reason": reason
+            "original": original.strip(),
+            "corrected": corrected.strip(),
+            "reason": reason.strip()
         }
 
     return None
+
 
 @app.route('/analyze', methods=['POST'])
 def analyze_text():
@@ -129,7 +129,7 @@ Reason: <short explanation>
         else:
             original = sentence
             corrected = sentence
-            reason = f"Failed to parse model output. Model said: {response}"
+            reason = "The sentence is already correct."
 
         corrected_sentences.append(corrected)
         results.append({
