@@ -1,6 +1,8 @@
 Flask
 transformers
 torch
-whisper
+openai-whisper
 librosa
 numpy
+nltk
+werkzeug
