@@ -59,18 +59,24 @@ def speech_to_text():
     return jsonify({'text': text})
 
 # Fungsi parsing output model
+import re
+
 def parse_model_response(response_text):
-    # Ambil hanya kalimat nomor 1
-    match = re.search(
-        r'1\.\s*(.*?)\nCorrected:\s*(.*?)\nReason:\s*(.*?)(?:\n\d\.|\Z)',
-        response_text,
+    pattern = re.compile(
+        r'Original:\s*(.*?)\s*Corrected:\s*(.*?)\s*Reason:\s*(.*)', 
         re.DOTALL
     )
 
+    match = pattern.search(response_text)
     if match:
         original = match.group(1).strip()
         corrected = match.group(2).strip()
         reason = match.group(3).strip()
+
+        # Safety check
+        if not corrected or not original:
+            return None
+
         return {
             "original": original,
             "corrected": corrected,
