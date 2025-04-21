@@ -26,7 +26,7 @@ Sebelum menjalankan aplikasi, pastikan paket-paket Python berikut telah diinstal
 Untuk menginstal paket yang dibutuhkan:
 
 ```bash
-pip install requirement.tzt
+pip install requirement.txt
 ```
 
 ## Preperation:
