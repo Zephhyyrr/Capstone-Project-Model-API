@@ -190,8 +190,6 @@ def analyze_text():
         })
 
     return jsonify({
-        "success": True,
-        "message": "Analysis successful",
             "corrected_paragraph": corrected_paragraph,
             "grammar_analysis": analysis_results
     })
