@@ -3,9 +3,9 @@
 Proyek ini adalah API berbasis Flask yang menyediakan dua fungsi utama:
 
 1. **Speech-to-Text**: Mengubah suara (file audio) menjadi teks menggunakan model Whisper.
-2. **Koreksi Tata Bahasa**: Menganalisis dan mengoreksi tata bahasa Inggris dalam teks menggunakan model LLaMA.
+2. **Koreksi Tata Bahasa**: Menganalisis dan mengoreksi tata bahasa Inggris dalam teks menggunakan model LLaMA, yang dipakai di API ini adalah LLAMA 3.2-1B-Instruct. Saya menggunakan ini untuk efesiensi penyimpanan dan response cepat.
 
-API ini menerima file audio dan input teks, memprosesnya, lalu mengembalikan output dengan koreksi yang rinci.
+API ini menerima file audio dan input teks, memprosesnya, lalu mengembalikan output dengan koreksi.
 
 ## Fitur
 
@@ -14,7 +14,7 @@ API ini menerima file audio dan input teks, memprosesnya, lalu mengembalikan out
 
 ## Requirement
 
-Sebelum menjalankan aplikasi, pastikan paket-paket Python berikut telah diinstal:
+Sebelum menjalankan aplikasi, pastikan libray Python berikut telah diinstal:
 
 - flask
 - torch
@@ -23,7 +23,7 @@ Sebelum menjalankan aplikasi, pastikan paket-paket Python berikut telah diinstal
 - transformers
 - werkzeug
 
-Untuk menginstal paket yang dibutuhkan:
+Untuk menginstal libraryyang dibutuhkan:
 
 ```bash
 pip install requirement.txt
@@ -34,7 +34,7 @@ pip install requirement.txt
 ### Download Model ke Local
 
 - **Whisper**: Digunakan untuk transkripsi suara ke teks.
-- **LLaMA**: Digunakan untuk koreksi tata bahasa. Pastikan file model sudah diunduh dan ditempatkan pada direktori yang sesuai.
+- **LLaMA**: Digunakan untuk koreksi tata bahasa. Pastikan file model sudah didownload dan ditempatkan pada direktori yang sesuai.
 
 ### Set up environment:
 
@@ -114,3 +114,6 @@ python app.py
 ```
 
 Secara default, aplikasi berjalan di `http://localhost:5051`.
+
+## Tech Stack
+![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/-Flask-000000?logo=flask&logoColor=white) ![PyTorch](https://img.shields.io/badge/-PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Transformers](https://img.shields.io/badge/-Transformers-FFD43B?logo=huggingface&logoColor=black) ![Whisper](https://img.shields.io/badge/-Whisper-4B8BBE?logo=openai&logoColor=white) ![NLTK](https://img.shields.io/badge/-NLTK-0277BD?logo=nltk&logoColor=white)
