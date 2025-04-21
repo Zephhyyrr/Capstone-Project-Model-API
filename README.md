@@ -26,7 +26,7 @@ Sebelum menjalankan aplikasi, pastikan libray Python berikut telah diinstal:
 Untuk menginstal libraryyang dibutuhkan:
 
 ```bash
-pip install requirement.txt
+pip install requirements.txt
 ```
 
 ## Preperation:
